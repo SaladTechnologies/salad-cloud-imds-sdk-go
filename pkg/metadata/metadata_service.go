@@ -35,6 +35,7 @@ func (api *MetadataService) ReallocateContainer(ctx context.Context, reallocateC
 	client := restClient.NewRestClient[any](config)
 
 	request := httptransport.NewRequest(ctx, "POST", "/v1/reallocate", config)
+	request.Headers["Content-Type"] = "application/json"
 
 	request.Body = reallocateContainer
 

@@ -17,10 +17,10 @@ Reallocates the running container to another Salad Node
 
 **Parameters**
 
-| Name                | Type                | Required | Description                 |
-| :------------------ | :------------------ | :------- | :-------------------------- |
-| ctx                 | Context             | ✅       | Default go language context |
-| reallocateContainer | ReallocateContainer | ✅       |                             |
+| Name                | Type                  | Required | Description                 |
+| :------------------ | :-------------------- | :------- | :-------------------------- |
+| ctx                 | `Context`             | ✅       | Default go language context |
+| reallocateContainer | `ReallocateContainer` | ✅       |                             |
 
 **Return Type**
 
@@ -61,9 +61,9 @@ Gets the health statuses of the running container
 
 **Parameters**
 
-| Name | Type    | Required | Description                 |
-| :--- | :------ | :------- | :-------------------------- |
-| ctx  | Context | ✅       | Default go language context |
+| Name | Type      | Required | Description                 |
+| :--- | :-------- | :------- | :-------------------------- |
+| ctx  | `Context` | ✅       | Default go language context |
 
 **Return Type**
 
@@ -99,9 +99,9 @@ Gets the identity token of the running container
 
 **Parameters**
 
-| Name | Type    | Required | Description                 |
-| :--- | :------ | :------- | :-------------------------- |
-| ctx  | Context | ✅       | Default go language context |
+| Name | Type      | Required | Description                 |
+| :--- | :-------- | :------- | :-------------------------- |
+| ctx  | `Context` | ✅       | Default go language context |
 
 **Return Type**
 
