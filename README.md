@@ -1,11 +1,11 @@
-# SaladCloudImdsSdk Go SDK 0.9.0-alpha.1
+# SaladCloudImdsSdk Go SDK 0.9.0-alpha.2
 
 Welcome to the SaladCloudImdsSdk SDK documentation. This guide will help you get started with integrating and using the SaladCloudImdsSdk SDK in your project.
 
 ## Versions
 
 - API version: `0.9.0-alpha.1`
-- SDK version: `0.9.0-alpha.1`
+- SDK version: `0.9.0-alpha.2`
 
 ## About the API
 
@@ -17,6 +17,7 @@ The SaladCloud Instance Metadata Service (IMDS). Please refer to the [SaladCloud
   - [Supported Language Versions](#supported-language-versions)
   - [Installation](#installation)
 - [Services](#services)
+  - [Response Wrappers](#response-wrappers)
 - [Models](#models)
 - [License](#license)
 
@@ -36,6 +37,45 @@ The SDK provides various services to interact with the API.
 | Name                                                          |
 | :------------------------------------------------------------ |
 | [MetadataService](documentation/services/metadata_service.md) |
+
+</details>
+
+### Response Wrappers
+
+All services use response wrappers to provide a consistent interface to return the responses from the API.
+
+The response wrapper itself is a generic struct that contains the response data and metadata.
+
+<details>
+<summary>Below are the response wrappers used in the SDK:</summary>
+
+#### `SaladCloudImdsSdkResponse[T]`
+
+This response wrapper is used to return the response data from the API. It contains the following fields:
+
+| Name     | Type                                | Description                                 |
+| :------- | :---------------------------------- | :------------------------------------------ |
+| Data     | `T`                                 | The body of the API response                |
+| Metadata | `SaladCloudImdsSdkResponseMetadata` | Status code and headers returned by the API |
+
+#### `SaladCloudImdsSdkError`
+
+This response wrapper is used to return an error. It contains the following fields:
+
+| Name     | Type                                | Description                                 |
+| :------- | :---------------------------------- | :------------------------------------------ |
+| Err      | `error`                             | The error that occurred                     |
+| Body     | `T`                                 | The body of the API response                |
+| Metadata | `SaladCloudImdsSdkResponseMetadata` | Status code and headers returned by the API |
+
+#### `SaladCloudImdsSdkResponseMetadata`
+
+This struct is shared by both response wrappers and contains the following fields:
+
+| Name       | Type                | Description                                      |
+| :--------- | :------------------ | :----------------------------------------------- |
+| Headers    | `map[string]string` | A map containing the headers returned by the API |
+| StatusCode | `int`               | The status code returned by the API              |
 
 </details>
 
