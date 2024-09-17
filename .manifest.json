@@ -1,11 +1,11 @@
 {
-  "liblabVersion": "2.3.1",
-  "date": "2024-09-11T23:34:37.047Z",
+  "liblabVersion": "2.4.0",
+  "date": "2024-09-17T04:36:03.787Z",
   "config": {
     "language": "go",
     "apiId": 1126,
     "sdkName": "salad-cloud-imds-sdk",
-    "sdkVersion": "0.9.0-alpha.2",
+    "sdkVersion": "0.9.0-alpha.3",
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
     "languages": ["go"],
@@ -26,7 +26,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-imds-sdk-dotnet",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.2",
+        "sdkVersion": "0.9.0-alpha.3",
         "targetBranch": "main"
       },
       "go": {
@@ -34,7 +34,7 @@
         "githubRepoName": "salad-cloud-imds-sdk-go",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.2",
+        "sdkVersion": "0.9.0-alpha.3",
         "targetBranch": "main"
       },
       "java": {
@@ -58,7 +58,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-imds-sdk-java",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.2",
+        "sdkVersion": "0.9.0-alpha.3",
         "targetBranch": "main"
       },
       "python": {
@@ -101,7 +101,7 @@
         "githubRepoName": "salad-cloud-imds-sdk-python",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.2",
+        "sdkVersion": "0.9.0-alpha.3",
         "targetBranch": "main"
       },
       "typescript": {
@@ -124,7 +124,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-imds-sdk-javascript",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.2",
+        "sdkVersion": "0.9.0-alpha.3",
         "targetBranch": "main"
       }
     },
@@ -156,7 +156,7 @@
     },
     "multiTenant": true,
     "hooksLocation": {
-      "bucketKey": "7096/hooks.zip",
+      "bucketKey": "7207/hooks.zip",
       "bucketName": "prod-liblab-api-stack-hooks"
     },
     "includeWatermark": false,
