@@ -1,6 +1,6 @@
 {
   "liblabVersion": "2.5.1",
-  "date": "2024-10-05T04:00:41.763Z",
+  "date": "2024-10-05T04:27:12.061Z",
   "config": {
     "language": "go",
     "apiId": 1126,
@@ -157,7 +157,7 @@
     },
     "multiTenant": true,
     "hooksLocation": {
-      "bucketKey": "7538/hooks.zip",
+      "bucketKey": "7539/hooks.zip",
       "bucketName": "prod-liblab-api-stack-hooks"
     },
     "includeWatermark": false,
