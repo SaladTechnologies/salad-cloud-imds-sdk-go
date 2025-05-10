@@ -4,16 +4,17 @@ import (
   "encoding/json"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
+
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-response, err := client.Metadata.GetContainerStatus(context.Background())
+response, err := client.Metadata.GetStatus(context.Background())
 if err != nil {
   panic(err)
 }
 
-fmt.Print(response)
+fmt.Println(response)
 
 ```

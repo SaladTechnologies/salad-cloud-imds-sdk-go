@@ -1,6 +1,6 @@
-# ContainerToken
+# Token
 
-Represents the identity token of the running container.
+The identity token of the current container instance.
 
 **Properties**
 
