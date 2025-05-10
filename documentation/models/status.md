@@ -1,6 +1,6 @@
-# ContainerStatus
+# Status
 
-Represents the health statuses of the running container.
+The health statuses of the current container instance.
 
 **Properties**
 

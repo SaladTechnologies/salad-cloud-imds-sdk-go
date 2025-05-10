@@ -10,7 +10,7 @@ import (
 config := saladcloudimdssdkconfig.NewConfig()
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-response, err := client.Metadata.GetToken(context.Background())
+response, err := client.Metadata.GetDeletionCost(context.Background())
 if err != nil {
   panic(err)
 }

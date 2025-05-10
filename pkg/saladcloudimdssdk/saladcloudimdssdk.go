@@ -4,6 +4,7 @@ import (
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/internal/configmanager"
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
+	"time"
 )
 
 type SaladCloudImdsSdk struct {
@@ -12,15 +13,23 @@ type SaladCloudImdsSdk struct {
 }
 
 func NewSaladCloudImdsSdk(config saladcloudimdssdkconfig.Config) *SaladCloudImdsSdk {
+	metadata := metadata.NewMetadataService()
+
 	manager := configmanager.NewConfigManager(config)
+	metadata.WithConfigManager(manager)
+
 	return &SaladCloudImdsSdk{
-		Metadata: metadata.NewMetadataService(manager),
+		Metadata: metadata,
 		manager:  manager,
 	}
 }
 
 func (s *SaladCloudImdsSdk) SetBaseUrl(baseUrl string) {
 	s.manager.SetBaseUrl(baseUrl)
+}
+
+func (s *SaladCloudImdsSdk) SetTimeout(timeout time.Duration) {
+	s.manager.SetTimeout(timeout)
 }
 
 // c029837e0e474b76bc487506e8799df5e3335891efe4fb02bda7a1441840310c

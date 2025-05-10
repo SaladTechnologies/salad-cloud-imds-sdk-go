@@ -1,6 +1,9 @@
 package configmanager
 
-import "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
+import (
+	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
+	"time"
+)
 
 type ConfigManager struct {
 	Metadata saladcloudimdssdkconfig.Config
@@ -14,6 +17,10 @@ func NewConfigManager(config saladcloudimdssdkconfig.Config) *ConfigManager {
 
 func (c *ConfigManager) SetBaseUrl(baseUrl string) {
 	c.Metadata.SetBaseUrl(baseUrl)
+}
+
+func (c *ConfigManager) SetTimeout(timeout time.Duration) {
+	c.Metadata.SetTimeout(timeout)
 }
 
 func (c *ConfigManager) GetMetadata() *saladcloudimdssdkconfig.Config {
