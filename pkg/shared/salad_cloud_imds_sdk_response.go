@@ -1,6 +1,8 @@
 package shared
 
 import (
+	"encoding/json"
+
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/internal/clients/rest/httptransport"
 )
 
@@ -22,4 +24,16 @@ func NewSaladCloudImdsSdkResponse[T any](resp *httptransport.Response[T]) *Salad
 			Headers:    resp.Headers,
 		},
 	}
+}
+
+func (r *SaladCloudImdsSdkResponse[T]) GetData() T {
+	return r.Data
+}
+
+func (r SaladCloudImdsSdkResponse[T]) String() string {
+	jsonData, err := json.MarshalIndent(r, "", "  ")
+	if err != nil {
+		return "error converting struct: SaladCloudImdsSdkResponse to string"
+	}
+	return string(jsonData)
 }

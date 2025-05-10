@@ -7,7 +7,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
 )
@@ -18,10 +17,7 @@ func main() {
 	config := saladcloudimdssdkconfig.NewConfig()
 	client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-	request := metadata.ReallocateContainer{}
-	request.SetReason("Reason")
-
-	response, err := client.Metadata.ReallocateContainer(context.Background(), request)
+	response, err := client.Metadata.GetDeletionCost(context.Background())
 	if err != nil {
 		panic(err)
 	}
