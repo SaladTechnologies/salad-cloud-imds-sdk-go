@@ -21,9 +21,10 @@ Gets the deletion cost of the current container instance
 
 **Parameters**
 
-| Name | Type    | Required | Description                 |
-| :--- | :------ | :------- | :-------------------------- |
-| ctx  | Context | ✅       | Default go language context |
+| Name   | Type                         | Required | Description                   |
+| :----- | :--------------------------- | :------- | :---------------------------- |
+| ctx    | Context                      | ✅       | Default go language context   |
+| params | GetDeletionCostRequestParams | ✅       | Additional request parameters |
 
 **Return Type**
 
@@ -35,15 +36,24 @@ Gets the deletion cost of the current container instance
 import (
   "fmt"
   "encoding/json"
+  "context"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
-
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
+
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-response, err := client.Metadata.GetDeletionCost(context.Background())
+metadata := metadata.METADATA_TRUE
+
+params := metadata.GetDeletionCostRequestParams{
+  Metadata: &metadata,
+}
+
+response, err := client.Metadata.GetDeletionCost(context.Background(), params)
 if err != nil {
   panic(err)
 }
@@ -60,14 +70,15 @@ Replaces the deletion cost of the current container instance
 
 **Parameters**
 
-| Name         | Type         | Required | Description                 |
-| :----------- | :----------- | :------- | :-------------------------- |
-| ctx          | Context      | ✅       | Default go language context |
-| deletionCost | DeletionCost | ✅       |                             |
+| Name         | Type                             | Required | Description                   |
+| :----------- | :------------------------------- | :------- | :---------------------------- |
+| ctx          | Context                          | ✅       | Default go language context   |
+| deletionCost | DeletionCost                     | ✅       |                               |
+| params       | ReplaceDeletionCostRequestParams | ✅       | Additional request parameters |
 
 **Return Type**
 
-`DeletionCost`
+`any`
 
 **Example Usage Code Snippet**
 
@@ -75,6 +86,7 @@ Replaces the deletion cost of the current container instance
 import (
   "fmt"
   "encoding/json"
+  "context"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
@@ -82,14 +94,21 @@ import (
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
+
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
+
+metadata := metadata.METADATA_TRUE
+
+params := metadata.ReplaceDeletionCostRequestParams{
+  Metadata: &metadata,
+}
 
 
 request := metadata.DeletionCost{
-  DeletionCost: util.ToPointer(int64(123)),
+  DeletionCost: util.ToPointer(int64(100)),
 }
 
-response, err := client.Metadata.ReplaceDeletionCost(context.Background(), request)
+response, err := client.Metadata.ReplaceDeletionCost(context.Background(), request, params)
 if err != nil {
   panic(err)
 }
@@ -106,10 +125,11 @@ Reallocates the current container instance to another SaladCloud node
 
 **Parameters**
 
-| Name                | Type                | Required | Description                 |
-| :------------------ | :------------------ | :------- | :-------------------------- |
-| ctx                 | Context             | ✅       | Default go language context |
-| reallocatePrototype | ReallocatePrototype | ✅       |                             |
+| Name                | Type                    | Required | Description                   |
+| :------------------ | :---------------------- | :------- | :---------------------------- |
+| ctx                 | Context                 | ✅       | Default go language context   |
+| reallocatePrototype | ReallocatePrototype     | ✅       |                               |
+| params              | ReallocateRequestParams | ✅       | Additional request parameters |
 
 **Return Type**
 
@@ -121,6 +141,7 @@ Reallocates the current container instance to another SaladCloud node
 import (
   "fmt"
   "encoding/json"
+  "context"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
@@ -128,14 +149,21 @@ import (
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
+
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
+
+metadata := metadata.METADATA_TRUE
+
+params := metadata.ReallocateRequestParams{
+  Metadata: &metadata,
+}
 
 
 request := metadata.ReallocatePrototype{
-  Reason: util.ToPointer("Reason"),
+  Reason: util.ToPointer("Insufficient VRAM"),
 }
 
-response, err := client.Metadata.Reallocate(context.Background(), request)
+response, err := client.Metadata.Reallocate(context.Background(), request, params)
 if err != nil {
   panic(err)
 }
@@ -152,9 +180,10 @@ Recreates the current container instance on the same SaladCloud node
 
 **Parameters**
 
-| Name | Type    | Required | Description                 |
-| :--- | :------ | :------- | :-------------------------- |
-| ctx  | Context | ✅       | Default go language context |
+| Name   | Type                  | Required | Description                   |
+| :----- | :-------------------- | :------- | :---------------------------- |
+| ctx    | Context               | ✅       | Default go language context   |
+| params | RecreateRequestParams | ✅       | Additional request parameters |
 
 **Return Type**
 
@@ -166,15 +195,24 @@ Recreates the current container instance on the same SaladCloud node
 import (
   "fmt"
   "encoding/json"
+  "context"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
-
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
+
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-response, err := client.Metadata.Recreate(context.Background())
+metadata := metadata.METADATA_TRUE
+
+params := metadata.RecreateRequestParams{
+  Metadata: &metadata,
+}
+
+response, err := client.Metadata.Recreate(context.Background(), params)
 if err != nil {
   panic(err)
 }
@@ -191,9 +229,10 @@ Restarts the current container instance on the same SaladCloud node
 
 **Parameters**
 
-| Name | Type    | Required | Description                 |
-| :--- | :------ | :------- | :-------------------------- |
-| ctx  | Context | ✅       | Default go language context |
+| Name   | Type                 | Required | Description                   |
+| :----- | :------------------- | :------- | :---------------------------- |
+| ctx    | Context              | ✅       | Default go language context   |
+| params | RestartRequestParams | ✅       | Additional request parameters |
 
 **Return Type**
 
@@ -205,15 +244,24 @@ Restarts the current container instance on the same SaladCloud node
 import (
   "fmt"
   "encoding/json"
+  "context"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
-
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
+
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-response, err := client.Metadata.Restart(context.Background())
+metadata := metadata.METADATA_TRUE
+
+params := metadata.RestartRequestParams{
+  Metadata: &metadata,
+}
+
+response, err := client.Metadata.Restart(context.Background(), params)
 if err != nil {
   panic(err)
 }
@@ -230,9 +278,10 @@ Gets the health statuses of the current container instance
 
 **Parameters**
 
-| Name | Type    | Required | Description                 |
-| :--- | :------ | :------- | :-------------------------- |
-| ctx  | Context | ✅       | Default go language context |
+| Name   | Type                   | Required | Description                   |
+| :----- | :--------------------- | :------- | :---------------------------- |
+| ctx    | Context                | ✅       | Default go language context   |
+| params | GetStatusRequestParams | ✅       | Additional request parameters |
 
 **Return Type**
 
@@ -244,15 +293,24 @@ Gets the health statuses of the current container instance
 import (
   "fmt"
   "encoding/json"
+  "context"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
-
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
+
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-response, err := client.Metadata.GetStatus(context.Background())
+metadata := metadata.METADATA_TRUE
+
+params := metadata.GetStatusRequestParams{
+  Metadata: &metadata,
+}
+
+response, err := client.Metadata.GetStatus(context.Background(), params)
 if err != nil {
   panic(err)
 }
@@ -269,9 +327,10 @@ Gets the identity token of the current container instance
 
 **Parameters**
 
-| Name | Type    | Required | Description                 |
-| :--- | :------ | :------- | :-------------------------- |
-| ctx  | Context | ✅       | Default go language context |
+| Name   | Type                  | Required | Description                   |
+| :----- | :-------------------- | :------- | :---------------------------- |
+| ctx    | Context               | ✅       | Default go language context   |
+| params | GetTokenRequestParams | ✅       | Additional request parameters |
 
 **Return Type**
 
@@ -283,15 +342,24 @@ Gets the identity token of the current container instance
 import (
   "fmt"
   "encoding/json"
+  "context"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
   "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
-
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
+  "github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 )
 
 config := saladcloudimdssdkconfig.NewConfig()
+
 client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-response, err := client.Metadata.GetToken(context.Background())
+metadata := metadata.METADATA_TRUE
+
+params := metadata.GetTokenRequestParams{
+  Metadata: &metadata,
+}
+
+response, err := client.Metadata.GetToken(context.Background(), params)
 if err != nil {
   panic(err)
 }
