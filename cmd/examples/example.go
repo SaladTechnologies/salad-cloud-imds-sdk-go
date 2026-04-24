@@ -2,13 +2,15 @@ package main
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"os"
 	"strings"
 
+	"context"
+	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/metadata"
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdk"
 	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/saladcloudimdssdkconfig"
+	"github.com/saladtechnologies/salad-cloud-imds-sdk-go/pkg/util"
 )
 
 func main() {
@@ -17,7 +19,13 @@ func main() {
 	config := saladcloudimdssdkconfig.NewConfig()
 	client := saladcloudimdssdk.NewSaladCloudImdsSdk(config)
 
-	response, err := client.Metadata.GetDeletionCost(context.Background())
+	metadata := metadata.METADATA_TRUE
+
+	params := metadata.GetDeletionCostRequestParams{
+		Metadata: &metadata,
+	}
+
+	response, err := client.Metadata.GetDeletionCost(context.Background(), params)
 	if err != nil {
 		panic(err)
 	}
